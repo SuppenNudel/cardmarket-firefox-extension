@@ -1,0 +1,1 @@
+# cardmarket-firefox-extension
