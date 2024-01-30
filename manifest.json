@@ -1,0 +1,52 @@
+{
+    "manifest_version": 2,
+    "name": "MKM Helper",
+    "version": "1.0",
+    "description": "Description",
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_icon": {
+            "32": "icons/geschaft-32.png"
+        }
+    },
+    "icons": {
+        "32": "icons/geschaft-32.png",
+        "16": "icons/geschaft.png"
+    },
+    "permissions": [
+        "storage",
+        "activeTab",
+        "webRequest",
+        "webRequestBlocking",
+        "webNavigation",
+        "https://api.scryfall.com/"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.cardmarket.com/*/Magic/Users/*/Offers/Singles*"
+            ],
+            "js": [
+                "lib/papaparse.min.js",
+                "upload-csv.js",
+                "cardmarket-mapping.js",
+                "offers-singles.js"
+            ]
+        },
+        {
+            "matches": [
+                "https://www.cardmarket.com/en/Magic/Products/*"
+            ],
+            "js": [
+                "lib/papaparse.min.js",
+                "upload-csv.js",
+                "sell.js"
+            ]
+        }
+    ]
+}
